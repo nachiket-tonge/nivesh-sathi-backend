@@ -1,6 +1,7 @@
 package com.hackathon.NiveshSathi.entity;
 
 import jakarta.persistence.*;
+import com.hackathon.NiveshSathi.enums.AuthProvider;
 
 @Entity
 @Table(name = "users")
@@ -19,6 +20,10 @@ public class User {
 
     private String profession;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AuthProvider provider;
+
     // getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -34,4 +39,12 @@ public class User {
 
     public String getProfession() { return profession; }
     public void setProfession(String profession) { this.profession = profession; }
+
+    public AuthProvider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(AuthProvider provider) {
+        this.provider = provider;
+    }
 }
